@@ -1,5 +1,4 @@
 import HttpErrors from "http-errors";
-import Users from '../models/Users.js';
 
 export default (req, res, next) => {
   try {
