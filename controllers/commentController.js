@@ -77,7 +77,7 @@ export default {
         include: [
           {
             model: Users,
-            as: 'users',
+            as: 'user',
             attributes: ['id', 'name'],
           },
         ],
