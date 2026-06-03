@@ -2,9 +2,6 @@ import {DataTypes, Model} from 'sequelize';
 import md5 from 'md5';
 
 import db from '../clients/db.sequelize.js';
-import Bookings from "./booking.js";
-import Comments from "./Comment.js";
-import Film from "./Film.js";
 
 const {PASSWORD_SECRET} = process.env;
 
@@ -12,7 +9,6 @@ class Users extends Model {
   static hash(pass) {
     return md5(md5(pass) + PASSWORD_SECRET);
   }
-
 
 }
 
@@ -56,18 +52,5 @@ Users.init({
     timestamps: true,
   },
 );
-
-// Users.hasMany(Bookings, {
-//   foreignKey: 'userId',
-//   as: 'bookings',
-// });
-//
-// Users.hasMany(Comments, {
-//   foreignKey: 'userId',
-//   as: 'comments',
-// });
-
-
-
 
 export default Users;

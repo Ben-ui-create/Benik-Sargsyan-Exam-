@@ -1,9 +1,6 @@
 import {DataTypes, Model} from 'sequelize';
 import db from '../clients/db.sequelize.js';
 
-import Users from './Users.js';
-import ShowTimes from './Showtime.js';
-
 class Bookings extends Model {
 
 }
@@ -17,7 +14,6 @@ Bookings.init({
     userId: {
       type: DataTypes.BIGINT,
       primaryKey: true,
-      allowNull: false,
     },
 
     showtimeId: {
@@ -52,16 +48,5 @@ Bookings.init({
     timestamps: true,
   },
 );
-
-// Bookings.belongsTo(Users, {
-//   foreignKey: 'userId',
-//   as: 'users',
-// });
-//
-// Bookings.belongsTo(ShowTimes, {
-//   foreignKey: 'showtimeId',
-//   as: 'showtime',
-// });
-
 
 export default Bookings;
