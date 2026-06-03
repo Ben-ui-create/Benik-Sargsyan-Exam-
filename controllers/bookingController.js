@@ -12,6 +12,7 @@ export default {
     try {
       const {showTimeId, seats} = req.body;
 
+      console.log(req.body);
       const showTime = await ShowTime.findByPk(showTimeId);
 
       if (!showTime) {
