@@ -17,7 +17,7 @@ Films.hasMany(ShowTimes, {
 
 ShowTimes.belongsTo(Films, {
   foreignKey: 'filmId',
-  as: 'films',
+  as: 'film',
 });
 
 Users.hasMany(Bookings, {
@@ -27,7 +27,7 @@ Users.hasMany(Bookings, {
 
 Bookings.belongsTo(Users, {
   foreignKey: 'userId',
-  as: 'users',
+  as: 'user',
 });
 
 ShowTimes.hasMany(Bookings, {
@@ -47,7 +47,7 @@ Users.hasMany(Comments, {
 
 Comments.belongsTo(Users, {
   foreignKey: 'userId',
-  as: 'users',
+  as: 'user',
 });
 
 Films.hasMany(Comments, {
@@ -57,5 +57,5 @@ Films.hasMany(Comments, {
 
 Comments.belongsTo(Films, {
   foreignKey: 'filmId',
-  as: 'films',
+  as: 'film',
 });

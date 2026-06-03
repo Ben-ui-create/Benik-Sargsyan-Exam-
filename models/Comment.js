@@ -1,11 +1,13 @@
 import {DataTypes, Model} from 'sequelize';
 import db from '../clients/db.sequelize.js';
+import Users from './Users.js';
+import Films from "./Film.js";
 
-class Bookings extends Model {
+class Comments extends Model {
 
 }
 
-Bookings.init({
+Comments.init({
     id: {
       type: DataTypes.BIGINT,
       primaryKey: true,
@@ -43,5 +45,15 @@ Bookings.init({
   },
 );
 
+// Comments.belongsTo(Users, {
+//   foreignKey: 'userId',
+//   as: 'users',
+// });
+//
+// Comments.belongsTo(Films, {
+//   foreignKey: 'filmId',
+//   as: 'films',
+// });
 
-export default Bookings;
+
+export default Comments;

@@ -1,6 +1,6 @@
 import Users from './models/Users.js';
 import Films from './models/Film.js';
-import ShowTimes from './models/Showtime.js';
+import ShowTime from './models/Showtime.js';
 import Bookings from './models/booking.js';
 import Comments from './models/Comment.js';
 
@@ -10,9 +10,9 @@ import Comments from './models/Comment.js';
   const models = [
     Users,
     Films,
-    ShowTimes,
-    Bookings,
-    Comments
+    ShowTime,
+    Comments,
+    Bookings
   ];
 
   for (const model of models) {

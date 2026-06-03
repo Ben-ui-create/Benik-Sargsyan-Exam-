@@ -1,5 +1,7 @@
 import {DataTypes, Model} from 'sequelize';
 import db from '../clients/db.sequelize.js';
+import ShowTimes from './Showtime.js';
+import Comments from './Comment.js';
 
 class Film extends Model {
 
@@ -38,6 +40,16 @@ Film.init({
     timestamps: true,
   },
 );
+
+// Film.hasMany(ShowTimes, {
+//   foreignKey: 'filmId',
+//   as: 'showtime',
+// });
+//
+// Film.hasMany(Comments, {
+//   foreignKey: 'filmId',
+//   as: 'comments',
+// });
 
 
 export default Film;
