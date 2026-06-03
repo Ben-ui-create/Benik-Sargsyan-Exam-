@@ -20,9 +20,8 @@ Bookings.init({
       allowNull: false,
     },
 
-    showTimeId: {
+    showtimeId: {
       type: DataTypes.BIGINT,
-      allowNull: false,
     },
 
     seats: {

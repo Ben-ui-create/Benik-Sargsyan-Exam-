@@ -10,10 +10,10 @@ const PAGE_SIZE = 10;
 export default {
   async createBooking(req, res, next) {
     try {
-      const {showTimeId, seats} = req.body;
+      const {showtimeId, seats} = req.body;
 
       console.log(req.body);
-      const showTime = await ShowTime.findByPk(showTimeId);
+      const showTime = await ShowTime.findByPk(showtimeId);
 
       if (!showTime) {
         throw new HttpErrors(404, {
@@ -43,7 +43,7 @@ export default {
 
       const booking = await Booking.create({
         userId: req.session.user.id,
-        showTimeId,
+        showtimeId,
         seats: seats.join(','),
         totalPrice,
         bookingReferance: uuidV4(),
