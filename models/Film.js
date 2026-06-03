@@ -15,22 +15,18 @@ Film.init({
     },
     title: {
       type: DataTypes.STRING,
-      allowNull: false,
     },
 
     description: {
       type: DataTypes.TEXT,
-      allowNull: false,
     },
 
     genre: {
       type: DataTypes.STRING,
-      allowNull: false,
     },
 
     duration: {
-      type: DataTypes.BIGINT,
-      allowNull: false,
+      type: DataTypes.STRING,
     },
   },
   {

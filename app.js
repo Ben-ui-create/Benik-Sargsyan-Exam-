@@ -4,6 +4,7 @@ import {createServer} from 'http';
 import express from 'express';
 import cookieParser from 'cookie-parser';
 
+import './models/index.js';
 import './migrate.js';
 
 import errorHandler from './middlewares/errorHandler.js';

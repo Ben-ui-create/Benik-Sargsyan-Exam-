@@ -4,6 +4,7 @@ import controller from '../controllers/filmController.js';
 
 import validation from '../middlewares/validation.js';
 import schema from '../middlewares/schemas/film.schema.js';
+import admin from '../middlewares/admin.js';
 
 const router = new Router();
 
@@ -19,18 +20,21 @@ router.get(
 
 router.post(
   '/',
+  admin,
   validation(schema.createFilm, 'body'),
   controller.createFilm,
 );
 
 router.put(
   '/:id',
+  admin,
   validation(schema.updateFilm, 'body'),
   controller.updateFilm,
 );
 
 router.delete(
   '/:id',
+  admin,
   controller.deleteFilm,
 );
 

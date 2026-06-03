@@ -13,6 +13,11 @@ ShowTime.init({
       primaryKey: true,
       autoIncrement: true,
     },
+
+    filmId: {
+      type: DataTypes.BIGINT,
+    },
+
     showDate: {
       type: DataTypes.DATEONLY,
     },

@@ -2,9 +2,8 @@ import {Op} from 'sequelize';
 import HttpErrors from "http-errors";
 
 import Films from '../models/Film.js';
-import ShowTimes from "../models/Showtime.js";
+import ShowTime from "../models/Showtime.js";
 import Booking from '../models/booking.js';
-import Users from '../models/Users.js';
 
 const PAGE_SIZE = 10;
 
@@ -47,8 +46,8 @@ export default {
       const film = await Films.findByPk(req.params.id, {
         include: [
           {
-            model: ShowTimes,
-            as: 'showTimes',
+            model: ShowTime,
+            as: 'showtime',
           },
         ],
       });
@@ -69,7 +68,6 @@ export default {
 
   async createFilm(req, res, next) {
     try {
-      if (Users.req.user.role === 'admin') {
         const {title, description, genre, duration} = req.body;
 
         const film = await Films.create({
@@ -82,10 +80,7 @@ export default {
         res.status(200).json({
           message: 'Film created successfully',
           film,
-        })
-      }
-
-      next();
+        });
     } catch (e) {
       next(e);
     }
@@ -93,7 +88,6 @@ export default {
 
   async updateFilm(req, res, next){
     try {
-      if (Users.req.user.role === 'admin') {
         const film = await Films.findByPk(req.params.id,);
 
         if (!film) {
@@ -110,9 +104,6 @@ export default {
           message: 'Film updated successfully',
           film,
         });
-      }
-
-      next();
     } catch (e) {
       next(e);
     }
@@ -120,7 +111,6 @@ export default {
 
   async deleteFilm(req, res, next) {
     try {
-      if (Users.req.user.role === 'admin') {
         const film = await Films.findByPk(req.params.id,);
 
         if (!film) {
@@ -131,7 +121,7 @@ export default {
           });
         }
 
-        const showTimes = await ShowTimes.findAll({
+        const showTimes = await ShowTime.findAll({
           where: {
             filmId: film.id,
           },
@@ -158,9 +148,6 @@ export default {
         res.status(200).json({
           message: 'Film deleted successfully',
         });
-      }
-
-      next();
     } catch (e) {
       next(e);
     }

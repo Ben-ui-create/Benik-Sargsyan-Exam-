@@ -4,7 +4,7 @@ import Users from '../models/Users.js';
 export default {
   async register(req, res, next) {
     try {
-      const { name, email, password, fullName } = req.body;
+      const { name, email, password, fullName, role } = req.body;
 
       const emailUser = await Users.findOne({
         where: {
@@ -25,6 +25,7 @@ export default {
         email,
         password,
         fullName,
+        role,
       });
 
       res.status(200).json({
@@ -62,6 +63,7 @@ export default {
         id: user.id,
         username: user.name,
         email: user.email,
+        role: user.role,
       }
 
       res.status(200).json({
