@@ -2,12 +2,15 @@ import {Router} from 'express';
 
 import admin from '../middlewares/admin.js';
 import controller from '../controllers/adminController.js';
+import validation from '../middlewares/validation.js';
+import schema from '../middlewares/schemas/showtime.schema.js';
 
 const router = Router();
 
 router.post(
   '/showtimes',
   admin,
+  validation(schema.createShowtime, 'body'),
   controller.createShowtime,
 );
 
