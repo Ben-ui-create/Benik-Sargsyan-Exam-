@@ -9,7 +9,7 @@ import './migrate.js';
 import errorHandler from './middlewares/errorHandler.js';
 import sessionMiddleware from './config/session.js';
 
-// import routes from './routes/index.js';
+import routes from './routes/index.js';
 
 const app = express();
 
@@ -21,7 +21,7 @@ app.use(sessionMiddleware);
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser(COOKIE_SECRET));
 
-// app.use(routes);
+app.use(routes);
 
 app.use(errorHandler.notFount);
 app.use(errorHandler.errors);
