@@ -25,8 +25,8 @@ ShowTime.init({
   },
   {
     sequelize: db,
-    modelName: 'users',
-    tableName: 'users',
+    modelName: 'showTimes',
+    tableName: 'showtime',
     timestamps: true,
   },
 );

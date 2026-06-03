@@ -45,8 +45,8 @@ Bookings.init({
   },
   {
     sequelize: db,
-    modelName: 'users',
-    tableName: 'users',
+    modelName: 'bookings',
+    tableName: 'bookings',
     timestamps: true,
   },
 );
