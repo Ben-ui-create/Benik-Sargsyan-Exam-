@@ -1,5 +1,6 @@
 import 'dotenv/config';
 import morgan from 'morgan';
+import path from 'path';
 import {createServer} from 'http';
 import express from 'express';
 import cookieParser from 'cookie-parser';
@@ -16,10 +17,15 @@ const app = express();
 
 const {PORT, COOKIE_SECRET} = process.env;
 
+
+app.set('views', path.resolve('views'));
+app.set('view engine', 'ejs');
+
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(sessionMiddleware);
 app.use(express.urlencoded({ extended: false }));
+app.use(express.static(path.resolve('public')));
 app.use(cookieParser(COOKIE_SECRET));
 
 app.use(routes);

@@ -38,4 +38,9 @@ router.delete(
   controller.deleteFilm,
 );
 
+
+router.get('/', (req, res) => {
+  res.render('film');
+});
+
 export default router;

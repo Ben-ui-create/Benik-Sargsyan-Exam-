@@ -31,12 +31,12 @@ Bookings.belongsTo(Users, {
 });
 
 ShowTimes.hasMany(Bookings, {
-  foreignKey: 'showTimeId',
+  foreignKey: 'showtimeId',
   as: 'bookings',
 });
 
 Bookings.belongsTo(ShowTimes, {
-  foreignKey: 'showTimeId',
+  foreignKey: 'showtimeId',
   as: 'showtime',
 });
 

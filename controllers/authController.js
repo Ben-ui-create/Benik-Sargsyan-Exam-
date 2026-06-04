@@ -28,6 +28,8 @@ export default {
         role,
       });
 
+      delete user.password;
+
       res.status(200).json({
         message: 'User registered successfully',
         user: {
@@ -65,6 +67,8 @@ export default {
         email: user.email,
         role: user.role,
       }
+
+      delete user.password;
 
       res.status(200).json({
         message: 'Logged in',
