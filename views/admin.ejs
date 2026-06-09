@@ -46,6 +46,12 @@
 				placeholder="Price"
 			/>
 
+			<input
+				type="number"
+				id="filmId"
+				placeholder="Film ID"
+			/>
+
 			<button type="submit">Add Showtime</button>
 		</form>
 
@@ -60,6 +66,8 @@
 					const duration = document.getElementById('duration').value
 					const description = document.getElementById('description').value
 					const showtime = document.getElementById('showtime').value
+					const price = document.getElementById('price').value
+					const filmId = document.getElementById('filmId').value
 
 					await fetch('/films', {
 						method: 'POST',
@@ -74,6 +82,18 @@
 						})
 					})
 
+					await fetch('/admin/showtimes', {
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json'
+						},
+						body: JSON.stringify({
+							showtime,
+							price
+						})
+					})
+
+					alert('Showtime created')
 					alert('Film created')
 				})
 		</script>
