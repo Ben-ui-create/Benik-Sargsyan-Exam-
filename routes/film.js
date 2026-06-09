@@ -1,46 +1,25 @@
-import {Router} from 'express';
+import { Router } from 'express'
 
-import controller from '../controllers/filmController.js';
+import controller from '../controllers/filmController.js'
 
-import validation from '../middlewares/validation.js';
-import schema from '../middlewares/schemas/film.schema.js';
-import admin from '../middlewares/admin.js';
+import validation from '../middlewares/validation.js'
+import schema from '../middlewares/schemas/film.schema.js'
+import admin from '../middlewares/admin.js'
 
-const router = new Router();
+const router = new Router()
 
-router.get(
-  '/',
-  controller.getFilms,
-);
+router.get('/', controller.getFilms)
 
-router.get(
-  '/:id',
-  controller.getFilm,
-);
+router.get('/:id', controller.getFilm)
 
-router.post(
-  '/',
-  admin,
-  validation(schema.createFilm, 'body'),
-  controller.createFilm,
-);
+router.post('/', validation(schema.createFilm, 'body'), controller.createFilm)
 
-router.put(
-  '/:id',
-  admin,
-  validation(schema.updateFilm, 'body'),
-  controller.updateFilm,
-);
+router.put('/:id', validation(schema.updateFilm, 'body'), controller.updateFilm)
 
-router.delete(
-  '/:id',
-  admin,
-  controller.deleteFilm,
-);
-
+router.delete('/:id', admin, controller.deleteFilm)
 
 router.get('/', (req, res) => {
-  res.render('film');
-});
+	res.render('film')
+})
 
-export default router;
+export default router

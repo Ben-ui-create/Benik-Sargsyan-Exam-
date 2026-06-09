@@ -39,16 +39,21 @@
 				.addEventListener('submit', async e => {
 					e.preventDefault()
 
+					const title = document.getElementById('title').value
+					const genre = document.getElementById('genre').value
+					const duration = document.getElementById('duration').value
+					const description = document.getElementById('description').value
+
 					await fetch('/films', {
 						method: 'POST',
 						headers: {
 							'Content-Type': 'application/json'
 						},
 						body: JSON.stringify({
-							title: title.value,
-							genre: genre.value,
-							duration: duration.value,
-							description: description.value
+							title,
+							genre,
+							duration,
+							description
 						})
 					})
 
