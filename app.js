@@ -1,40 +1,47 @@
-import 'dotenv/config';
-import morgan from 'morgan';
-import path from 'path';
-import {createServer} from 'http';
-import express from 'express';
-import cookieParser from 'cookie-parser';
+import 'dotenv/config'
+import morgan from 'morgan'
+import path from 'path'
+import { createServer } from 'http'
+import express from 'express'
+import cookieParser from 'cookie-parser'
 
-import './models/index.js';
-import './migrate.js';
+import './models/index.js'
+import './migrate.js'
 
-import errorHandler from './middlewares/errorHandler.js';
-import sessionMiddleware from './config/session.js';
+import errorHandler from './middlewares/errorHandler.js'
+import sessionMiddleware from './config/session.js'
 
-import routes from './routes/index.js';
+import routes from './routes/index.js'
 
-const app = express();
+const app = express()
 
-const {PORT, COOKIE_SECRET} = process.env;
+const { PORT, COOKIE_SECRET } = process.env
 
+app.set('views', path.resolve('views'))
+app.set('view engine', 'ejs')
 
-app.set('views', path.resolve('views'));
-app.set('view engine', 'ejs');
+app.use(morgan('dev'))
+app.use(express.json())
+app.use(sessionMiddleware)
+app.use(express.urlencoded({ extended: false }))
+app.use(express.static(path.resolve('public')))
+app.use(cookieParser(COOKIE_SECRET))
 
-app.use(morgan('dev'));
-app.use(express.json());
-app.use(sessionMiddleware);
-app.use(express.urlencoded({ extended: false }));
-app.use(express.static(path.resolve('public')));
-app.use(cookieParser(COOKIE_SECRET));
+app.get('/', (req, res) => {
+	res.render('films')
+})
 
-app.use(routes);
+app.get('/admin_panel', (req, res) => {
+	res.render('admin')
+})
 
-app.use(errorHandler.notFount);
-app.use(errorHandler.errors);
+app.use(routes)
 
-const server = createServer(app);
+app.use(errorHandler.notFount)
+app.use(errorHandler.errors)
+
+const server = createServer(app)
 
 server.listen(PORT, () => {
-  console.log(`Listening on ${PORT}`);
-});
+	console.log(`Listening on ${PORT}`)
+})
