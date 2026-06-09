@@ -26,4 +26,8 @@ router.delete(
   controller.deleteShowtimes,
 );
 
+router.get('/admin_panel', (req, res) => {
+  res.render('admin');
+});
+
 export default router;

@@ -8,6 +8,10 @@ import commentsRouter from './comment.js';
 
 const router = new Router();
 
+router.get('/', (req, res) => {
+  res.render('films');
+});
+
 router.use('/users', usersRouter);
 router.use('/films', filmsRouter);
 router.use('/bookings', bookingRouter);

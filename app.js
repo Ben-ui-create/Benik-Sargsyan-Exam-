@@ -27,14 +27,6 @@ app.use(express.urlencoded({ extended: false }))
 app.use(express.static(path.resolve('public')))
 app.use(cookieParser(COOKIE_SECRET))
 
-app.get('/', (req, res) => {
-	res.render('films')
-})
-
-app.get('/admin_panel', (req, res) => {
-	res.render('admin')
-})
-
 app.use(routes)
 
 app.use(errorHandler.notFount)
