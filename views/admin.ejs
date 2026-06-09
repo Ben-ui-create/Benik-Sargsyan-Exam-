@@ -35,9 +35,15 @@
 
 		<form id="showtimeForm">
 			<input
-				type="datetime-local"
-				id="showtime"
-				placeholder="Showtime"
+				type="number"
+				id="showDate"
+				placeholder="ShowDate"
+			/>
+
+			<input
+				type="number"
+				id="showTime"
+				placeholder="ShowTime"
 			/>
 
 			<input
@@ -65,7 +71,8 @@
 					const genre = document.getElementById('genre').value
 					const duration = document.getElementById('duration').value
 					const description = document.getElementById('description').value
-					const showtime = document.getElementById('showtime').value
+					const showDate = document.getElementById('showDate').value
+					const showTime = document.getElementById('showTime').value
 					const price = document.getElementById('price').value
 					const filmId = document.getElementById('filmId').value
 
@@ -88,8 +95,10 @@
 							'Content-Type': 'application/json'
 						},
 						body: JSON.stringify({
-							showtime,
-							price
+							showDate: document.getElementById('showDate').value,
+							showTime: document.getElementById('showTime').value,
+							price: document.getElementById('price').value,
+							filmId: document.getElementById('filmId').value
 						})
 					})
 

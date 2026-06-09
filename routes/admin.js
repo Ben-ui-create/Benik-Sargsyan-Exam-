@@ -1,33 +1,24 @@
-import {Router} from 'express';
+import { Router } from 'express'
 
-import admin from '../middlewares/admin.js';
-import controller from '../controllers/adminController.js';
-import validation from '../middlewares/validation.js';
-import schema from '../middlewares/schemas/showtime.schema.js';
+import admin from '../middlewares/admin.js'
+import controller from '../controllers/adminController.js'
+import validation from '../middlewares/validation.js'
+import schema from '../middlewares/schemas/showtime.schema.js'
 
-const router = Router();
+const router = Router()
 
 router.post(
-  '/showtimes',
-  admin,
-  validation(schema.createShowtime, 'body'),
-  controller.createShowtime,
-);
+	'/showtimes',
+	validation(schema.createShowtime, 'body'),
+	controller.createShowtime
+)
 
-router.get(
-  '/showtimes',
-  admin,
-  controller.getShowtime,
-);
+router.get('/showtimes', admin, controller.getShowtime)
 
-router.delete(
-  '/showtimes/:id',
-  admin,
-  controller.deleteShowtimes,
-);
+router.delete('/showtimes/:id', admin, controller.deleteShowtimes)
 
 router.get('/admin_panel', (req, res) => {
-  res.render('admin');
-});
+	res.render('admin')
+})
 
-export default router;
+export default router
