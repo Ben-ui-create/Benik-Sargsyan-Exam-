@@ -1,8 +1,4 @@
-import Users from './models/Users.js';
-import Films from './models/Film.js';
-import ShowTime from './models/Showtime.js';
-import Bookings from './models/booking.js';
-import Comments from './models/Comment.js';
+import {Users, Films, ShowTime, Bookings, Comments} from './models/index.js';
 
 ;(async () => {
   console.log('Running Migration');
@@ -11,8 +7,8 @@ import Comments from './models/Comment.js';
     Users,
     Films,
     ShowTime,
-    Comments,
-    Bookings
+    Bookings,
+    Comments
   ];
 
   for (const model of models) {

@@ -1,6 +1,8 @@
 import {DataTypes, Model} from 'sequelize';
 import db from '../clients/db.sequelize.js';
 
+import Films from './Film.js';
+
 class ShowTime extends Model {
 
 }
@@ -11,11 +13,6 @@ ShowTime.init({
       primaryKey: true,
       autoIncrement: true,
     },
-
-    filmId: {
-      type: DataTypes.BIGINT,
-    },
-
     showDate: {
       type: DataTypes.DATEONLY,
     },
@@ -35,5 +32,16 @@ ShowTime.init({
     timestamps: true,
   },
 );
+
+
+Films.hasMany(ShowTime, {
+  foreignKey: 'filmId',
+  as: 'showtime',
+});
+
+ShowTime.belongsTo(Films, {
+  foreignKey: 'filmId',
+  as: 'film',
+});
 
 export default ShowTime;
