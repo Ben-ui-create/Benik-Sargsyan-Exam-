@@ -20,7 +20,6 @@ router.get(
 
 router.post(
   '/',
-  admin,
   validation(schema.createFilm, 'body'),
   controller.createFilm,
 );
