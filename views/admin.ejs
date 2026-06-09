@@ -25,18 +25,28 @@
 				placeholder="Duration"
 			/>
 
-			<input
-				type="number"
-				id="showtime"
-				placeholder="Showtime"
-			/>
-
 			<textarea
 				id="description"
 				placeholder="Description"
 			></textarea>
 
 			<button type="submit">Add Film</button>
+		</form>
+
+		<form id="showtimeForm">
+			<input
+				type="number"
+				id="filmId"
+				placeholder="Film ID"
+			/>
+
+			<input
+				type="datetime-local"
+				id="showtime"
+				placeholder="Showtime"
+			/>
+
+			<button type="submit">Add Showtime</button>
 		</form>
 
 		<script>
@@ -60,8 +70,7 @@
 							title,
 							genre,
 							duration,
-							description,
-							showtime
+							description
 						})
 					})
 
