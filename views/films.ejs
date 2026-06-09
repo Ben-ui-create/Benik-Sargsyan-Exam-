@@ -23,17 +23,10 @@
                 <p>Genre: ${film.genre}</p>
                 <p>Duration: ${film.duration} min</p>
 
-                <button onclick="openFilm(${film.id})">
-                    View Showtimes
-                </button>
             </div>
             <hr>
         `
 				})
-			}
-
-			function openFilm(id) {
-				window.location.href = '/film-details.html?id=' + id
 			}
 
 			loadFilms()

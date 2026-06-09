@@ -25,6 +25,12 @@
 				placeholder="Duration"
 			/>
 
+			<input
+				type="number"
+				id="showtime"
+				placeholder="Showtime"
+			/>
+
 			<textarea
 				id="description"
 				placeholder="Description"
@@ -43,6 +49,7 @@
 					const genre = document.getElementById('genre').value
 					const duration = document.getElementById('duration').value
 					const description = document.getElementById('description').value
+					const showtime = document.getElementById('showtime').value
 
 					await fetch('/films', {
 						method: 'POST',
@@ -53,7 +60,8 @@
 							title,
 							genre,
 							duration,
-							description
+							description,
+							showtime
 						})
 					})
 
