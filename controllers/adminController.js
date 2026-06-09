@@ -5,7 +5,7 @@ import Films from '../models/Film.js';
 export default {
   async createShowtime(req, res, next) {
     try {
-      const {filmId, showDate, showTime, price, totalSeats} = req.body;
+      const {filmId, showDate, showTime, price} = req.body;
 
       const film = await Films.findByPk(filmId);
 
@@ -22,7 +22,6 @@ export default {
         showDate,
         showTime,
         price,
-        totalSeats,
       });
 
       res.status(200).json(showtime);
